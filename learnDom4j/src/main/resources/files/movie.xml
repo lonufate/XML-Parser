@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<movies>
+    <movie name="釜山行">
+        <country>Korea</country>
+        <author>AAA</author>
+        <type>恐怖</type>
+        <duration>135</duration>
+    </movie>
+    <movie name="美队3">
+        <country>American</country>
+        <author>BBB</author>
+        <type>Hero</type>
+        <duration>125</duration>
+    </movie>
+    <movie name="忍者神龟2">
+        <country>American</country>
+        <author>CCC</author>
+        <type>同人</type>
+        <duration>133</duration>
+    </movie>
+    <movie name="惊天魔盗团2">
+        <country>England</country>
+        <author>DDD</author>
+        <type>魔幻</type>
+        <duration>140</duration>
+    </movie>
+</movies>

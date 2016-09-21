@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="UTF-8" ?>
+<?xml version="1.0" encoding="UTF-8"?>
 <rooms>
     <room code="113">
         <member name="Nero">
@@ -11,7 +11,7 @@
             <height>170cm</height>
             <weight>63kg</weight>
         </member>
-        <member name="">
+        <member name="Jared">
             <age>18</age>
             <height>175cm</height>
             <weight>65kg</weight>
@@ -22,4 +22,17 @@
             <weight>70kg</weight>
         </member>
     </room>
+    <script><![CDATA[
+function matchwo(a,b)
+{
+if (a < b && a < 0) then
+  {
+  return 1;
+  }
+else
+  {
+  return 0;
+  }
+}
+]]></script>
 </rooms>

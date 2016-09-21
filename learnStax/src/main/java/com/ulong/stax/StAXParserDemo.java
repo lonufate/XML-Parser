@@ -1,12 +1,11 @@
 package com.ulong.stax;
 
-import javax.xml.stream.XMLEventReader;
-import javax.xml.stream.XMLInputFactory;
-import javax.xml.stream.XMLStreamConstants;
-import javax.xml.stream.XMLStreamException;
+import javax.xml.bind.Element;
+import javax.xml.stream.*;
 import javax.xml.stream.events.*;
 import java.io.FileNotFoundException;
 import java.io.FileReader;
+import java.io.IOException;
 import java.util.Iterator;
 
 /**
@@ -16,16 +15,37 @@ import java.util.Iterator;
  * @create 2016/9/21
  */
 public class StAXParserDemo {
-    public static void main(String[] args) throws FileNotFoundException, XMLStreamException {
+    public static void main(String[] args) throws IOException, XMLStreamException {
         boolean bAge = false;
         boolean bHeight = false;
         boolean bWeight = false;
 
-
+        //1st step: get inputFactor
         XMLInputFactory factory = XMLInputFactory.newInstance();
-        XMLEventReader eventReader = factory.createXMLEventReader(new FileReader("learnStax/src/main/resources/room.xml"));
+        FileReader fileReader = new FileReader("learnStax/src/main/resources/room.xml");
+        //2nd step: create eventReader
+        XMLEventReader eventReader = factory.createXMLEventReader(fileReader);
 
-        while (eventReader.hasNext()) {
+        //打印所有类型的event
+        //treeWalk(eventReader);
+
+        //begin 打印过滤后的event
+        //return (!event.isCharacters());
+        XMLEventReader nodeReader = factory.createFilteredReader(eventReader, XMLEvent::isStartElement);
+        int nodeNum = treeWalk(nodeReader);
+        System.out.println("节点总数："+nodeNum);
+
+        //stream会被关掉，得新建一个
+        fileReader = new FileReader("learnStax/src/main/resources/room.xml");
+        XMLEventReader eventReader2 = factory.createXMLEventReader(fileReader);
+        XMLEventReader attrReader = factory.createFilteredReader(eventReader2, XMLEvent::isStartElement);
+        int attrNum = getAttrNum(attrReader);
+        System.out.println("属性总数："+attrNum);
+        //end
+
+
+        /*while (eventReader.hasNext()) {
+            //eventReader逐行读取每一个标签，还包括\n
             XMLEvent event = eventReader.nextEvent();
             switch (event.getEventType()) {
                 case XMLStreamConstants.START_ELEMENT:
@@ -67,7 +87,31 @@ public class StAXParserDemo {
                     }
                     break;
             }
-        }
+        }*/
 
+    }
+
+    private static int treeWalk(XMLEventReader reader) throws XMLStreamException {
+        int count = 0;
+        while(reader.hasNext()){
+            XMLEvent event = reader.nextEvent();
+            System.out.println(event);
+            count++;
+        }
+        return count;
+    }
+
+    private static int getAttrNum(XMLEventReader reader) throws XMLStreamException {
+        int count = 0;
+        while (reader.hasNext()){
+            XMLEvent event = reader.nextEvent();
+            StartElement ele = event.asStartElement();
+            for(Iterator it = ele.getAttributes();it.hasNext();){
+                Attribute attr = ((Attribute) it.next());
+                System.out.println(attr.getName()+"= \""+attr.getValue()+"\"");
+                count++;
+            }
+        }
+        return count;
     }
 }

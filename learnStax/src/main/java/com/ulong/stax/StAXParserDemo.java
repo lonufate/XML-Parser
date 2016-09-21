@@ -3,9 +3,7 @@ package com.ulong.stax;
 import javax.xml.bind.Element;
 import javax.xml.stream.*;
 import javax.xml.stream.events.*;
-import java.io.FileNotFoundException;
-import java.io.FileReader;
-import java.io.IOException;
+import java.io.*;
 import java.util.Iterator;
 
 /**
@@ -43,7 +41,13 @@ public class StAXParserDemo {
         System.out.println("属性总数："+attrNum);
         //end
 
+        String xml = "<member name=\"Nero\"><age>18</age><height>172cm</height><weight>60kg</weight></member>";
+        //BufferedReader bf = new BufferedReader(new StringReader(xml));
 
+        XMLEventReader eventReader3 = factory.createXMLEventReader(new StringReader(xml));
+        XMLEventReader nodeReader3 = factory.createFilteredReader(eventReader3, XMLEvent::isStartElement);
+        int nodeNum3 = treeWalk(nodeReader3);
+        System.out.println("节点总数："+nodeNum3);
         /*while (eventReader.hasNext()) {
             //eventReader逐行读取每一个标签，还包括\n
             XMLEvent event = eventReader.nextEvent();

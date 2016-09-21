@@ -7,10 +7,10 @@
     <version>1.0-SNAPSHOT</version>
   </parent>
   <!--<groupId>com.ulong.learn</groupId>-->
-  <artifactId>learnDom4j</artifactId>
+  <artifactId>learnStax</artifactId>
   <packaging>jar</packaging>
   <version>1.0-SNAPSHOT</version>
-  <name>learnDom4j</name>
+  <name>learnStax</name>
   <url>http://maven.apache.org</url>
   
 </project>

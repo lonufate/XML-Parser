@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<rooms>
+    <room code="113">
+        <member name="Nero">
+            <age>18</age>
+            <height>172cm</height>
+            <weight>60kg</weight>
+        </member>
+        <member name="Oliver">
+            <age>18</age>
+            <height>170cm</height>
+            <weight>63kg</weight>
+        </member>
+        <member name="">
+            <age>18</age>
+            <height>175cm</height>
+            <weight>65kg</weight>
+        </member>
+        <member name="Maple">
+            <age>18</age>
+            <height>176cm</height>
+            <weight>70kg</weight>
+        </member>
+    </room>
+</rooms>

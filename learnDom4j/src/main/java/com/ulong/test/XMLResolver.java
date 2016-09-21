@@ -7,7 +7,7 @@ import java.io.File;
 import java.util.Iterator;
 
 /**
- * 这是一个解析和操作XML的类
+ * 这是一个使用dom4j解析和操作XML的类
  *
  * @author Ulong
  * @create 2016/9/20

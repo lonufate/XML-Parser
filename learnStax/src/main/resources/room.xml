@@ -1,8 +1,25 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<rooms>
-    <room code="113">
+<?xml-stylesheet type="text/xsl" href="room.xsl"?>
+<!DOCTYPE rooms[
+        <!ELEMENT rooms (position,a:room+,script)>
+        <!ELEMENT position EMPTY>
+        <!ELEMENT a:room (member+)>
+        <!ELEMENT script (#PCDATA)>
+        <!ELEMENT member (age,height,weight)>
+        <!ELEMENT age (#PCDATA)>
+        <!ELEMENT height (#PCDATA)>
+        <!ELEMENT weight (#PCDATA)>
+        <!ATTLIST a:room code ID "113">
+        <!ATTLIST member name ID "113">
+        <!ATTLIST position address CDATA "C4">
+        ]>
+<!--begin xml file for test-->
+<rooms xmlns="http://lonufate.git.io" xmlns:a="http://geronimo.apache.org/xml/ns/attributes">
+    where we live
+    <position address="ISS C4"/>
+    <a:room code="113">
         <member name="Nero">
-            <age>18</age>
+            <age>18<?xml-stylesheet type="text/xsl" href="room.xsl"?></age>
             <height>172cm</height>
             <weight>60kg</weight>
         </member>
@@ -11,17 +28,17 @@
             <height>170cm</height>
             <weight>63kg</weight>
         </member>
-        <member name="Jared">
+        <member name="Jared" xmlns="http://java.sun.com/xml/ns/j2ee">
             <age>18</age>
             <height>175cm</height>
-            <weight>65kg</weight>
+            <weight xmlns="http://cxf.apache.org/jaxws">65kg</weight>
         </member>
-        <member name="Maple">
+        <member name="Maple" xmlns="http://java.sun.com/xml/ns/j2ee">
             <age>18</age>
             <height>176cm</height>
             <weight>70kg</weight>
         </member>
-    </room>
+    </a:room>
     <script><![CDATA[
 function matchwo(a,b)
 {
@@ -36,3 +53,4 @@ else
 }
 ]]></script>
 </rooms>
+        <!--end-->

@@ -27,6 +27,7 @@ public class StAXParserDemo {
         //1st step: get inputFactor
         XMLInputFactory factory = XMLInputFactory.newInstance();
 
+        String fileName = StAXParserDemo.class.getResource("/").toString()+"room.xml";
         FileReader fileReader = new FileReader("learnStax/src/main/resources/room.xml");
         /*//2nd step: create eventReader
         XMLEventReader eventReader = factory.createXMLEventReader(fileReader);
@@ -46,7 +47,7 @@ public class StAXParserDemo {
         System.out.println("节点总数：" + nodeNum);
 
         //stream会被关掉，得新建一个
-        fileReader = new FileReader("learnStax/src/main/resources/room.xml");
+        fileReader = new FileReader(fileName);
         XMLEventReader eventReader2 = factory.createXMLEventReader(fileReader);
         XMLEventReader attrReader = factory.createFilteredReader(eventReader2, new EventFilter() {
             @Override
@@ -73,7 +74,7 @@ public class StAXParserDemo {
         //end*/
 
         //begin 使用stax流过滤器
-        fileReader = new FileReader("learnStax/src/main/resources/room.xml");
+        fileReader = new FileReader(fileName);
         XMLStreamReader xmlSR = factory.createXMLStreamReader(fileReader);
         //XMLStreamReader xmlFSR = factory.createFilteredReader(xmlSR, filter);
         XMLStreamReader xmlFSR = factory.createFilteredReader(xmlSR, tagFilter);

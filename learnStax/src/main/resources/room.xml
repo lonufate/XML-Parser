@@ -13,9 +13,9 @@
         <!ATTLIST member name ID "113">
         <!ATTLIST position address CDATA "C4">
         ]>
-<!--begin xml file for test-->
+<!--begin xml file for test &lt;entity test$gt; 注释中的实体并不会被展开-->
 <rooms xmlns="http://lonufate.git.io" xmlns:a="http://geronimo.apache.org/xml/ns/attributes">
-    where we live
+    where we live &gt;entity test&lt; <!--entity in node text-->
     <position address="ISS C4"/>
     <a:room code="113">
         <member name="Nero">
